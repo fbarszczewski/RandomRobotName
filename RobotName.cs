@@ -4,13 +4,9 @@ using System.Collections.Generic;
 public class Robot
 {
     public string Name { get; set; }
-    private List<string> _nameList = new();
+    private readonly List<string> _nameList = new();
 
-    public Robot()
-    {
-        Name = GetUniqueName();
-
-    }
+    public Robot() => Name = GetUniqueName();
 
     private string GetUniqueName()
     {
@@ -42,7 +38,7 @@ public class Robot
         for (var ctr = 0; ctr < lettersNumber; ctr++)
         {
             //decoding ascii values from A-Z (65-90)
-            randLetters += Convert.ToChar(rand.Next(64, 91));
+            randLetters += Convert.ToChar(rand.Next(65, 91));
         }
 
         return randLetters;
