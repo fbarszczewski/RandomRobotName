@@ -11,6 +11,11 @@ public class RobotNameTests
     {
         Assert.Matches(@"^[A-Z]{2}\d{3}$", robot.Name);
     }
+    [Fact]
+    public void RandomLetters_Have_uppercase_letters()
+    {
+        Assert.Matches(@"^[A-Z]{5}", robot.RandomLetters(5));
+    }
 
     [Fact(Skip = "Remove this Skip property to run this test")]
     public void Name_is_the_same_each_time()
