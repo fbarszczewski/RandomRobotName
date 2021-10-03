@@ -18,6 +18,7 @@ public class Robot
         {
             newName = RandomLetters(2) + rand.Next(100, 999);
         }
+
         _nameList.Add(Name);
 
         return newName;
