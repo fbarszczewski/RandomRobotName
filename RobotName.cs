@@ -17,15 +17,12 @@ public class Robot
         var rand = new Random();
         string newName="";
 
-        //check for duplications
-        do
+
+        while (_nameList.Contains(newName)|| newName=="")
         {
             newName = RandomLetters(2) + rand.Next(100, 999);
-
-        } while (_nameList.Contains(newName));
-
+        }
         _nameList.Add(Name);
-
 
         return newName;
     }
