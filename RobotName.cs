@@ -1,25 +1,36 @@
 using System;
 using System.Collections.Generic;
 
+using Microsoft.VisualBasic;
+
 public class Robot
 {
-    public string Name { get; set; }
-    private readonly List<string> _nameList = new();
+    private static readonly List<string> NameList = new();
+    private string _name;
+
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            NameList.Add(value);
+            _name = value;
+        }
+    }
 
     public Robot() => Name = GetUniqueName();
+
 
     private string GetUniqueName()
     {
         var rand = new Random();
-        string newName="";
+        var newName = "";
 
 
-        while (_nameList.Contains(newName)|| newName=="")
+        while (NameList.Contains(newName) || newName == "")
         {
-            newName = RandomLetters(2) + rand.Next(100, 999);
+            newName = RandomLetters(2) + rand.Next(101, 998);
         }
-
-        _nameList.Add(Name);
 
         return newName;
     }
@@ -42,12 +53,12 @@ public class Robot
             randLetters += Convert.ToChar(rand.Next(65, 91));
         }
 
-        return randLetters;
+        return randLetters.ToUpper();
     }
 
     public void Reset()
     {
-        _nameList.Remove(Name);
+        NameList.Remove(Name);
         Name = GetUniqueName();
     }
 }
